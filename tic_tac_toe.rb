@@ -92,7 +92,13 @@ class GameBoard
                 @@victory = true
                 puts "#{player.name} wins"
             end
-        end 
+        end
+        # cat's game
+        if !board.any?(Integer)
+            puts "Cat's game"
+            @@victory = true
+        end
+
 
     end
 
