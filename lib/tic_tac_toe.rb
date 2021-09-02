@@ -61,34 +61,24 @@ class GameBoard
 
     def player_move(player)
         puts "#{player.name}, your move"
-        #move = gets.chomp.to_i
         validate_move(player, move = gets.chomp.to_i)
-        # #if player already chose that number send error message and rerun method
-        # if !board.include?(move)
-        #     puts "Number is unavailable. Try again"
-        #     player_move(player)
-        # else
         player.player_score.push(move)
         #log score and update gameboard
         update_game(move, player.symbol)
         #check if player has won
         game_status(player)
-        
     end
 
     def validate_move(player, move)
+        #if player already chose that number send error message and rerun method
         if !board.include?(move)
             puts "Number is unavailable. Try again"
             player_move(player)
         else
             true
-        #     player.player_score.push(move)
-        #     #log score and update gameboard
-        #     update_game(move, player.symbol)
-        #     #check if player has won
-        #     game_status(player)
         end
     end
+    
     #after player makes move, render new board
     def update_game(move, symbol)
         board.map! do |i|
